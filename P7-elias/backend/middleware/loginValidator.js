@@ -11,4 +11,5 @@ module.exports = (req, res, next) => {
         if(req.body.password === ""){
             return res.status(400).json({message:'mot de passe obligatoire'})
         }
+        next()
  };

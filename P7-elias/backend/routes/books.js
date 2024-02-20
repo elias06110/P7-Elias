@@ -4,6 +4,7 @@ const multer = require('../middleware/multer-config')
 
 
 
+
 const auth = require('../middleware/auth');
 // permet d'authentifier les requetes
 
