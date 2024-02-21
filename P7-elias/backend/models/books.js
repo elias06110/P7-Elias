@@ -6,17 +6,20 @@ const nonEmptyStringValidator = function (value) {
   
 };
 
-const nonEmptyNumberValidator = function (value) {
-  return typeof value === 'Number' && value.trim().length > 0;
-  
+//vérifie si la valeur est un nombre entier et si elle est dans une plage plausible pour représenter une année 
+const validYearValidator = function (value) {
+  const currentYear = new Date().getFullYear();
+  return Number.isInteger(value) && value >= 1000 && value <= currentYear;
 };
+
+
 
 const bookSchema = mongoose.Schema({
   userId: { type: String, required: true },
   title: { type: String, required: true, validate: nonEmptyStringValidator },
   author: { type: String, required: true, validate: nonEmptyStringValidator },
   imageUrl: { type: String, required: true, validate: nonEmptyStringValidator },
-  year: { type: Number, required: true , validate: nonEmptyNumberValidator},
+  year: { type: Number, required: true, validate: [validYearValidator, "Please enter a valid year"]  },
   genre: { type: String, required: true, validate: nonEmptyStringValidator },
   ratings: [
     {

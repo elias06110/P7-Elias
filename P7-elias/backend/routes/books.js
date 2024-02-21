@@ -12,7 +12,7 @@ const booksCtrl = require('../controllers/books');
 
 router.get('/bestrating',booksCtrl.bestRating)
 
-router.post('/:id/rating',booksCtrl.rating)
+router.post('/:id/rating', auth, booksCtrl.rating)
 
 router.get('/', booksCtrl.getAllBooks);
 //renvoie un tableau de tous les livres de la base de données

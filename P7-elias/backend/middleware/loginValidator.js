@@ -8,8 +8,5 @@ module.exports = (req, res, next) => {
         if(validator.validate(email)=== false){
             return res.status(400).json({message:'email invalide'})
         }
-        if(req.body.password === ""){
-            return res.status(400).json({message:'mot de passe obligatoire'})
-        }
         next()
  };
