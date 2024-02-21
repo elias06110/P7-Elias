@@ -28,7 +28,7 @@ correctement son ImageUrl.
 /*/
 
 
-router.put('/:id', auth, multer, booksCtrl.modifyBook);
+router.put('/:id', auth, multer, booksCtrl.updateBook);
 //Met à jour le livre avec l'_id fourni
 
 router.delete('/:id', auth, booksCtrl.deleteBook);
