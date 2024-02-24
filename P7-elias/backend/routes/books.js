@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('../middleware/multer-config')
-
+const sharp = require('../middleware/sharp-config');
 
 
 
@@ -20,7 +20,7 @@ router.get('/', booksCtrl.getAllBooks);
 router.get('/:id', booksCtrl.getOneBook);
 //Renvoie le livre avec l’_id fourni
 
-router.post('/', auth, multer, booksCtrl.createBook);
+router.post('/', auth, multer, sharp, booksCtrl.createBook);
 /*Capture et enregistre l'image, analyse le livre
 transformé en chaîne de caractères, et l'enregistre
 dans la base de données en définissant
@@ -28,7 +28,7 @@ correctement son ImageUrl.
 /*/
 
 
-router.put('/:id', auth, multer, booksCtrl.updateBook);
+router.put('/:id', auth, multer,sharp, booksCtrl.updateBook);
 //Met à jour le livre avec l'_id fourni
 
 router.delete('/:id', auth, booksCtrl.deleteBook);
